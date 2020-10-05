@@ -108,8 +108,8 @@ internal_warningf(const char *fmt, ...)
 	va_end(va);
 }
 
-/* Warn and unwind when something that shouldn't happen does */
-__dead void
+/* Warn and unwind when something that shouldn't happen does - TODO: unwinding needed to be removed, replace */
+void
 internal_errorf(const char *fmt, ...)
 {
 	va_list va;

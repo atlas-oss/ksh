@@ -148,7 +148,7 @@ static struct tbl *intvar(Expr_state *, struct tbl *);
  * parse and evaluate expression
  */
 int
-evaluate(const char *expr, int64_t *rval, int error_ok, bool arith)
+evaluate(const char *expr, __int64_t *rval, int error_ok, bool arith)
 {
 	struct tbl v;
 	int ret;
@@ -283,7 +283,7 @@ evalexpr(Expr_state *es, enum prec prec)
 {
 	struct tbl *vl, *vr = NULL, *vasn;
 	enum token op;
-	int64_t res = 0;
+	__int64_t res = 0;
 
 	if (prec == P_PRIMARY) {
 		op = es->tok;

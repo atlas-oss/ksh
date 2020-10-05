@@ -365,7 +365,7 @@ vfptreef(struct shf *shf, int indent, const char *fmt, va_list va)
 
 	while ((c = *fmt++)) {
 		if (c == '%') {
-			int64_t n;
+			__int64_t n;
 			char *p;
 			int neg;
 

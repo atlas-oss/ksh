@@ -19,7 +19,7 @@ struct tbl {			/* table item */
 	Area	*areap;		/* area to allocate from */
 	union {
 		char *s;	/* string */
-		int64_t i;	/* integer */
+		__int64_t i;	/* integer */
 		int (*f)(char **);	/* int function */
 		struct op *t;	/* "function" tree */
 	} val;			/* value */

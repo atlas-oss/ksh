@@ -18,6 +18,9 @@
 
 #include "sh.h"
 
+// Port
+#define srand_deterministic(x)	srand(x)
+
 /*
  * Variables
  *

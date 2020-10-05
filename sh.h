@@ -443,7 +443,7 @@ int	search_access(const char *, int, int *);
 int	pr_menu(char *const *);
 int	pr_list(char *const *);
 /* expr.c */
-int	evaluate(const char *, int64_t *, int, bool);
+int	evaluate(const char *, __int64_t *, int, bool);
 int	v_evaluate(struct tbl *, const char *, volatile int, bool);
 /* history.c */
 void	init_histvec(void);
@@ -516,7 +516,7 @@ pid_t	j_async(void);
 int	j_stopped_running(void);
 /* mail.c */
 void	mcheck(void);
-void	mcset(int64_t);
+void	mcset(__int64_t);
 void	mbset(char *);
 void	mpset(char *);
 /* main.c */
@@ -531,7 +531,7 @@ void	cleanup_proc_env(void);
 /* misc.c */
 void	setctypes(const char *, int);
 void	initctypes(void);
-char *	u64ton(uint64_t, int);
+char *	u64ton(__uint64_t, int base);
 char *	str_save(const char *, Area *);
 char *	str_nsave(const char *, int, Area *);
 int	option(const char *);
@@ -587,11 +587,11 @@ void	initvar(void);
 struct tbl *	global(const char *);
 struct tbl *	local(const char *, bool);
 char *	str_val(struct tbl *);
-int64_t	intval(struct tbl *);
+__int64_t	intval(struct tbl *);
 int	setstr(struct tbl *, const char *, int);
 struct tbl *setint_v(struct tbl *, struct tbl *, bool);
-void	setint(struct tbl *, int64_t);
-int	getint(struct tbl *, int64_t *, bool);
+void	setint(struct tbl *, __int64_t);
+int	getint(struct tbl *, __int64_t *, bool);
 struct tbl *typeset(const char *, int, int, int, int);
 void	unset(struct tbl *, int);
 char  * skip_varname(const char *, int);

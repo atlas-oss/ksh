@@ -109,7 +109,7 @@ extern char	ident[IDENT+1];
 
 extern char   **history;	/* saved commands */
 extern char   **histptr;	/* last history item */
-extern uint32_t	histsize;	/* history size */
+extern __uint32_t	histsize;	/* history size */
 
 int	yylex(int);
 void	yyerror(const char *, ...)
