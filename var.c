@@ -12,8 +12,13 @@
 #include <time.h>
 #include <unistd.h>
 #ifndef SMALL
+#if defined(__DragonFly__)
+#include <ncurses/term.h>
+#include <ncurses/curses.h>
+#else
 # include <term.h>
-# include <curses.h>
+#include <curses.h>
+#endif
 #endif
 
 #include "sh.h"

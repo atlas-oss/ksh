@@ -22,8 +22,13 @@
 #include <stdlib.h>
 #include <string.h>
 #ifndef SMALL
-# include <term.h>
-# include <curses.h>
+# if defined (__DragonFly__)
+#  include <ncurses/term.h>
+#  include <ncurses/curses.h>
+# else
+#  include <term.h>
+#  include <curses.h>
+# endif
 #endif
 
 #include "sh.h"
@@ -1431,7 +1436,11 @@ x_bind(const char *a1, const char *a2,
 
 	if (strlen(a2) == 0) {
 		/* clear binding */
+#if defined(__DragonFly__)
+		TAILQ_FOREACH_MUTABLE(k, &kblist, entry, kb)
+#else
 		TAILQ_FOREACH_SAFE(k, &kblist, entry, kb)
+#endif
 			if (!strcmp(k->seq, in)) {
 				kb_del(k);
 				break;
@@ -1442,7 +1451,11 @@ x_bind(const char *a1, const char *a2,
 	/* set binding */
 	if (macro) {
 		/* delete old mapping */
+#if defined(__DragonFly__)
+		TAILQ_FOREACH_MUTABLE(k, &kblist, entry, kb)
+#else
 		TAILQ_FOREACH_SAFE(k, &kblist, entry, kb)
+#endif
 			if (!strcmp(k->seq, in)) {
 				kb_del(k);
 				break;
@@ -1457,7 +1470,11 @@ x_bind(const char *a1, const char *a2,
 			continue;
 		if (!strcmp(x_ftab[i].xf_name, a2)) {
 			/* delete old mapping */
-			TAILQ_FOREACH_SAFE(k, &kblist, entry, kb)
+#if defined(__DragonFly__)
+		TAILQ_FOREACH_MUTABLE(k, &kblist, entry, kb)
+#else
+		TAILQ_FOREACH_SAFE(k, &kblist, entry, kb)
+#endif
 				if (!strcmp(k->seq, in)) {
 					kb_del(k);
 					break;

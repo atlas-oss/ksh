@@ -15,8 +15,13 @@
 #include <stdlib.h>
 #include <string.h>
 #ifndef SMALL
+#if defined(__DragonFly__)
+#include <ncurses/term.h>
+#include <ncurses/curses.h>
+#else
 # include <term.h>
 # include <curses.h>
+#endif
 #endif
 
 #include "sh.h"

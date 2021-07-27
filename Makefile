@@ -2,7 +2,7 @@
 
 PROG=	ksh
 DPADD+=	${LIBCURSES}
-LDADD+=	-lcurses
+LDADD+=	-lncurses -ltinfo -L/usr/local/lib
 
 SRCS=	alloc.c c_ksh.c c_sh.c c_test.c c_ulimit.c edit.c emacs.c eval.c \
 	exec.c expr.c history.c io.c jobs.c lex.c mail.c main.c \
@@ -11,7 +11,7 @@ SRCS=	alloc.c c_ksh.c c_sh.c c_test.c c_ulimit.c edit.c emacs.c eval.c \
 
 WARNINGS=yes
 DEFS=	-DEMACS -DVI
-CFLAGS+=${DEFS} -I. -I${.CURDIR} -I${.CURDIR}/../../lib/libc/gen
+CFLAGS+=${DEFS} -I. -I${.CURDIR} -I${.CURDIR}/../../lib/libc/gen -I/usr/local/include
 MAN=	ksh.1 sh.1
 
 LINKS=	${BINDIR}/ksh ${BINDIR}/rksh
